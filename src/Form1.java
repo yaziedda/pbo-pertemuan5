@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -43,6 +44,12 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
             tv_1.setText(String.valueOf(random));
         }
         tv_soal.setText(String.valueOf(ask1+" X "+ask2));
+//        panel3.setBackground(Color.blue);
+        tv_space.setVisible(false);
+        panel1.setBackground(Color.blue);
+        panel2.setBackground(Color.blue);
+        panel3.setBackground(Color.orange);
+        tv_soal.setBackground(Color.orange);
     }
 
     /**
@@ -64,6 +71,7 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
         jLabel1 = new javax.swing.JLabel();
         panel4 = new java.awt.Panel();
         tv_jawaban = new javax.swing.JLabel();
+        tv_space = new java.awt.Label();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -187,6 +195,9 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
                 .addContainerGap())
         );
 
+        tv_space.setAlignment(java.awt.Label.CENTER);
+        tv_space.setText("Tekan spasi untuk next");
+
         jMenu3.setText("File");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
@@ -217,7 +228,8 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
                         .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                         .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tv_space, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -229,6 +241,8 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
                     .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tv_space, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -278,6 +292,7 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel tv_2;
     private javax.swing.JLabel tv_jawaban;
     private java.awt.Label tv_soal;
+    private java.awt.Label tv_space;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -293,20 +308,43 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
             if(isRandom){
                 System.out.println("BENAR");
                 tv_jawaban.setText("BENAR");
+                panel1.setBackground(Color.green);
+                panel2.setBackground(Color.red);
+                panel3.setBackground(Color.green);
+                tv_soal.setBackground(Color.green);
             }else{
                 System.out.println("SALAH");
                 tv_jawaban.setText("SALAH");
+                panel1.setBackground(Color.red);
+                panel2.setBackground(Color.green);
+                panel3.setBackground(Color.red);
+                tv_soal.setBackground(Color.red);
             }
+            tv_space.setVisible(true);
         }
         
         if (key == KeyEvent.VK_RIGHT) {
             if(isRandom){                
                 System.out.println("SALAH");
                 tv_jawaban.setText("SALAH");
+                panel2.setBackground(Color.red);
+                panel1.setBackground(Color.green);
+                panel3.setBackground(Color.red);
+                tv_soal.setBackground(Color.red);
             }else{
                 System.out.println("BENAR");
                 tv_jawaban.setText("BENAR");
+                panel2.setBackground(Color.green);
+                panel1.setBackground(Color.red);
+                panel3.setBackground(Color.green);
+                tv_soal.setBackground(Color.green);
             }
+            
+            tv_space.setVisible(true);
+        }
+        
+        if( key == KeyEvent.VK_SPACE){
+            initNew();
         }
         
         if (key == KeyEvent.VK_UP) {
@@ -317,7 +355,7 @@ public class Form1 extends javax.swing.JFrame implements KeyListener {
             System.out.println("DOWN");
         }
                 
-        initNew();
+//        initNew();
     }
 
     @Override
